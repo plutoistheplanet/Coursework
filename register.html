@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Register - Text Adventure</title>
+		<link rel="stylesheet" href="loginRegisterStyles.css" />
+		<script src="register.js" defer></script>
+	</head>
+	<body>
+		<div class="container">
+			<h1>Enter the Game</h1>
+			<form id="registerForm">
+				<input type="email" id="email" placeholder="Email" required /><br />
+				<input type="text" id="username" placeholder="Username" required /><br />
+
+				<div class="password-container">
+					<input
+						type="password"
+						id="password"
+						placeholder="Password"
+						required
+						title="Password must be at least 8 characters long and include at least 1 number."
+					/>
+				</div>
+				<br />
+				<div class="password-container">
+					<input
+						type="password"
+						id="confirmPassword"
+						placeholder="Confirm Password"
+						required
+						title="Passwords must match."
+					/>
+					<span class="toggle-password" onclick="togglePasswordVisibility(this)">👁️</span>
+				</div>
+
+				<div class="button-container">
+					<button id="alreadyPlayerBtn">Already a Player?</button>
+					<button type="submit">Register</button>
+				</div>
+			</form>
+		</div>
+	</body>
+</html>
