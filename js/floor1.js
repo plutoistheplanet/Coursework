@@ -389,7 +389,10 @@ function nextScene(option){
         finishTyping();
     }
     else{
-        if (option.item) {
+        if(option.next == "nextFloor"){
+            nextFloor();
+        }
+        if(option.item) {
             playerInventory.addItem(option.item);  // Add item to inventory
         }
         if(option.itemRequired){
@@ -413,9 +416,6 @@ function nextScene(option){
         }
         else{
             showScene(option.next);
-        }
-        if(option.nextFloor){
-            //code to move to next floor
         }
     }    
 }
@@ -449,7 +449,9 @@ function startMinigame(option){
         minigame.startMinigame1(option);
     }
 }
-
+function nextFloor(){
+    window.location.href = "floor2.html";
+}
 
 
 
