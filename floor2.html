@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Game</title>
+        <link rel="stylesheet" href="css/styles.css">
+    </head>
+    <body>
+        <div id="layout">
+            <div id="container-leftColumn">
+                <h1>Game Name Here</h1>
+                <p>Map</p>
+                <div id="map">
+                    <cell id="finalFloor"></cell>
+                    <cell id="floor5">Floor 5</cell>
+                    <cell id="floor4">Floor 4</cell>
+                    <cell id="floor3">Floor 3</cell>
+                    <cell id="floor2">Floor 2</cell>
+                    <cell id="floor1">Floor 1</cell>
+                    <cell id="reception">Reception</cell>
+                </div>
+                <div id="container-options">
+                    <div id="options">
+                        <!--Maybe dynamically create buttons-->
+                        
+                    </div>
+                </div>
+            </div>
+            <div id="container-rightColumn">
+                <div id="container-topHalf">
+                    <div id="container-centralImage">
+                        <img id="image"></img>
+                    </div>
+                    <div id="container-inventory">
+                        <p>Items</p>
+                        <div id="inventory"></div>
+                        <div id="container-inventoryUse">
+                            <cell id="selectedItem"></cell>
+                            <button id="useButton">Use Item</button>
+                        </div>
+                    </div>
+                </div>
+                <div id="container-bottomHalf">
+                    <div id="container-middleDialogue">
+                        <div id="dialogueBox">
+                            <p id="dialogue"></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- minigames -->
+        <div id="popup" class="popup">
+            <div id="myProgress">
+                <div id="myBar"></div> 
+                <p id="instruction-text">Input needed...</p>
+                <input type="text" id="userInput" placeholder="Type here..."/>
+                <p id="outcome" class="outcome"></p>
+                <br><br>
+            </div>
+        </div>
+        
+        <script src="js/minigame2.js" defer></script>
+        <script src="js/typewriter.js" ></script>
+        <script src="js/inventory.js"></script>
+        <script src="js/floor2.js"></script>
+        
+    </body>
+</html>

@@ -2,9 +2,11 @@ class inventory{
     constructor(innerInventory){
         this.innerInventory = JSON.parse(sessionStorage.getItem("inventory")) || Array(16).fill(null); //Change this to get from database
         this.items = {
-            "can": "media/img/items/energycan.png",
             "secretIngredient": "media/img/items/page.png",
-            "letterOpener": "media/img/items/letterOpener.png"
+            "page": "media/img/items/page.png",
+            "bandage": "media/img/items/smallMedpack.png",
+            "paper1": "media/img/items/page.png",
+            "paper2": "media/img/items/page.png"
         };
     }  
     renderInventory(){

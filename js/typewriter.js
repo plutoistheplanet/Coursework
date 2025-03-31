@@ -1,5 +1,5 @@
 class TypeWriter {
-  constructor(targetID, text, speed = 25) {
+  constructor(targetID, text, speed = 20) {
     this.targetElement = document.getElementById(targetID);
     this.text = text;
     this.speed = speed;
@@ -64,9 +64,11 @@ class TypeWriter {
     return this.finished;
   }
 }
+
 // Later, if you want to immediately finish:
 function finishTyping() {
   tw.finish();
   if (tw.isFinished()) {
+    console.log("The text has finished typing.");
   }
 }
