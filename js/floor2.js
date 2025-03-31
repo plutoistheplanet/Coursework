@@ -28,7 +28,7 @@ const gameData = {
                 Which door do you pick?`,
         options: [
             { text: "Open the first door", next: "tryRoom1Attack" },
-            { text: "Open the second door", next: "tryRoom2" },
+            { text: "Open the second door", next: "tryRoom2Attack" },
             { text: "Return to the elevator", next: "elevator" },
         ]
     },
@@ -227,7 +227,69 @@ const gameData = {
         text: `You take the piece of paper. It seems to be the right half of a code to the elevator, 'zzy'.`,
         options: [
             { text: "Leave the room", next: "floor"}
-        ]
+        ],
+        tryRoom2Attack: {
+            img: "hallwayStorage.jpg",
+            text: `You open the door, leading into what looks like a storage room...<br/><br/>
+                    Step inside?`,
+            options: [
+                { text: "Enter the room", next: "room2Attack" },
+                { text: "Ignore the room", next: "floorAttack" }
+            ]
+        },
+        room2Attack: {
+            img: "hallwayStorage.jpg",
+            text: `You enter the room, looking around.<br/><br/>
+                    Against one wall are a series of shelves, and tucked away in a corner is a safe.<br/><br/>`,
+            options: [
+                { text: "Examine the shelves", next: "room2ShelvesAttack" },
+                { text: "Examine the safe", next: "room2SafeAttack" },
+                { text: "Leave the room", next: "floorAttack" }
+            ]
+        },
+        room2ShelvesAttack: {
+            img: "hallwayStorage.jpg",
+            text: `There is an empty shelf at the very left of the room. <br/><br/>
+            There is then a shelf with four boxes on it. Another shelf with five boxes is to the right of it.<br/><br/>
+            At the very far right of the room there is a shelf with one box on it.`,
+            options: [
+                { text: "Examine the safe", next: "room2SafeAttack" },
+                { text: "Leave the room", next: "floorAttack" }
+            ]
+        },
+        room2SafeAttack: {
+            img: "hallwayStorage.jpg",
+            text: `The safe sits underneath a dusty desk, with a keypanel asking for a four-digit code.`,
+            options: [
+                { text: "Try to open the safe", next: "room2SafeOpenAttack", minigame: "opensafe", fail: "room2SafeFailAttack" },
+                { text: "Examine the shelves", next: "room2ShelvesAttack" },
+                { text: "Leave the room", next: "floorAttack" }
+            ]
+        },
+        room2SafeFailAttack: {
+            img: "hallwayStorage.jpg",
+            text: `The safe beeps to indicate you have input an incorrect code.`,
+            options: [
+                { text: "Try to open the safe again", next: "room2SafeOpenAttack", minigame: "opensafe", fail: "room2SafeFailAttack" },
+                { text: "Examine the shelves", next: "room2ShelvesAttack" },
+                { text: "Leave the room", next: "floorAttack" }
+            ]
+        },
+        room2SafeOpenAttack: {
+            img: "hallwayStorage.jpg",
+            text: `The safe clicks, and you open it to find a ripped piece of paper...`,
+            options: [
+                { text: "Take the paper", next: "room2PaperTakeAttack", item: "paper2" },
+                { text: "Leave the room", next: "floorAttack" }
+            ]
+        },
+        room2PaperTakeAttack: {
+            img: "hallwayStorage.jpg",
+            text: `You take the piece of paper. It seems to be the right half of a code to the elevator, 'zzy'.`,
+            options: [
+                { text: "Leave the room", next: "floorAttack" }
+            ]
+        }
     },
     elevator: {
         img: "elevators.jpg",
@@ -243,6 +305,22 @@ const gameData = {
         options: [
             {text: "Input another password", minigame: "elevatorCode", fail: "elevatorFail", next: "elevatorAscend"},
             { text: "Leave the elevator", next: "floor"}
+        ]
+    },
+    elevatorAttack: {
+        img: "elevators.jpg",
+        text: 'You step back into the elevator, the panel still demanding a password...',
+        options: [
+            {text: "Input a password", minigame: "elevatorCodeAttack", fail: "elevatorFailAttack", next: "elevatorAscend"},
+            { text: "Leave the elevator", next: "floorAttack"}
+        ]
+    },
+    elevatorFailAttack: {
+        img: "elevators.jpg",
+        text: 'With a shrill beep, the panel helpfully informs you that the password is wrong.',
+        options: [
+            {text: "Input another password", minigame: "elevatorCode", fail: "elevatorFail", next: "elevatorAscend"},
+            { text: "Leave the elevator", next: "floorAttack"}
         ]
     },
     elevatorAscend: {
