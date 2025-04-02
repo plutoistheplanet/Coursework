@@ -149,7 +149,6 @@ class Minigame {
     }
     closePopup() {
         this.popup.style.display = "none";
-        this.inputField.value = "";
     }
 }
 

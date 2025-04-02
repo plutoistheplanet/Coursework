@@ -14,7 +14,7 @@ class gameDocument{
         }
         if(this.option.document == "document1.txt"){
             text = `Document 1.<br/><br/>
-            The secret passcode is 6930!`;
+            The secret passcode is 6930!<br/>`;
         }
         if(this.option.document == "IMPORTANTforCompanyEyesONLY.txt"){
             text = `<u>Ingredients:</u><br/>
@@ -28,7 +28,7 @@ class gameDocument{
             -Super Secret Ingredient<br/>`;
         }
         if(this.option.document == "bigBadSecretPlans.txt"){
-            text = `Blow up the world!`
+            text = `Blow up the world!<br/>`
         }
         if(this.option.document == "secretIngredient.txt"){
             text = `Note to self:<br/>
