@@ -64,11 +64,11 @@ class inventory{
         const selectedItemImg = selectedItemCell.querySelector("img");
 
         if (selectedItemImg) {
-            selectedItemCell.removeChild(selectedItemImg); // Remove the selected item
+            selectedItemCell.removeChild(selectedItemImg);
         }
     }
     updateStorage() {
-        sessionStorage.setItem("inventory", JSON.stringify(this.innerInventory)); //Change this to use database instead
+        sessionStorage.setItem("inventory", JSON.stringify(this.innerInventory));
     }
     useItem(){
         console.log("Use Item()");
@@ -81,7 +81,12 @@ class inventory{
         }
         if(itemName == "secretIngredient"){
             openDocument("secretIngredient");
+            this.removeItem();
         }
+    }
+    removeItem(){
+        document.getElementById("selectedItem").innerHTML = "";
+        this.renderInventory();
     }
     drag(event) {
         event.dataTransfer.setData("text", event.target.id);
