@@ -211,7 +211,7 @@ function getCurrentSessionId() {
 
 function showScene(sceneKey) {
 	const scene = gameData[sceneKey];
-	backgroundImg.src = "media/img/background/" + scene.img;
+	backgroundImg.src = "media/background/" + scene.img;
 	tw = new TypeWriter("dialogue", scene.text);
 	tw.start();
 	optionsDiv.innerHTML = "";
