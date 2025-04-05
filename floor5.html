@@ -20,7 +20,6 @@
                 </div>
                 <div id="container-options">
                     <div id="options">
-                        <!--Maybe dynamically create buttons-->
                         
                     </div>
                 </div>
@@ -35,38 +34,24 @@
                         <div id="inventory"></div>
                         <div id="container-inventoryUse">
                             <cell id="selectedItem"></cell>
-                            <button id="useButton">View</button>
+                            <button id="useButton">View Item</button>
                         </div>
                     </div>
                 </div>
                 <div id="container-bottomHalf">
                     <div id="container-middleDialogue">
                         <div id="dialogueBox">
-                            <div id="dialogue" overflow-y: auto></div>
+                            <p id="dialogue"></p>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
         <!-- minigames -->
-        <div id="popup" class="popup">
-            <div id="myProgress">
-                <div id="myBar"></div> 
-                <p id="instruction-text">TYPE : KICK</p>
-                <input type="text" id="userInput" placeholder="Type here..."/>
-                <p id="outcome" class="outcome"></p>
-                <br><br>
-            </div>
-        </div>
-        <div id="container-document">
-            <div id="documentContent"></div>
-        </div>
-        
-        <script src="js/gameDocument.js" defer></script>
-        <script src="js/minigame1.js" defer></script>
+        <script src="js/util.js"></script>
         <script src="js/typewriter.js" ></script>
         <script src="js/inventory.js"></script>
-        <script src="js/floor1.js"></script>
+        <script src="js/floor5.js"></script>
         <script src="js/db.js"></script>
         
     </body>
