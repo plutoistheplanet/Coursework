@@ -20,6 +20,7 @@
                 </div>
                 <div id="container-options">
                     <div id="options">
+                        <!--Maybe dynamically create buttons-->
                         
                     </div>
                 </div>
@@ -34,7 +35,7 @@
                         <div id="inventory"></div>
                         <div id="container-inventoryUse">
                             <cell id="selectedItem"></cell>
-                            <button id="useButton">View Item</button>
+                            <button id="useButton">Use Item</button>
                         </div>
                     </div>
                 </div>
@@ -48,12 +49,20 @@
             </div>
         </div>
         <!-- minigames -->
+        <div id="minigame-popup" style="display: none;">
+            <p id="minigame-instruction"></p>
+            <input id="minigame-input" type="text" autocomplete="off" />
+            <div style="width: 100%; background: #333; height: 20px;">
+                <div id="minigame-bar" style="width: 100%; height: 100%; background: green;"></div>
+            </div>
+            <p id="minigame-outcome"></p>
+        </div>
+        
         <script src="js/preferences.js"></script>
-        <script src="js/db.js"></script>
-        <script src="js/util.js"></script>
-        <script src="js/typewriter.js" ></script>
+        <script src="js/minigameJack.js"></script>
+        <script src="js/typewriter.js"></script>
         <script src="js/inventory.js"></script>
-        <script src="js/floor5.js"></script>
+        <script src="js/floor4.js"></script>
         
     </body>
 </html>
