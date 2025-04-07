@@ -294,7 +294,7 @@ const gameData = {
         The man drops the paper as he walks out of the room.<br/><br/>
         Pickup the paper?`,
         options: [
-            { text: "Pickup the paper", next: "room2PickupPaper", item: "secretIngredient" },
+            { text: "Pickup the paper", next: "room2PickupPaper" },
         ]
     },
     room2PickupPaper:{
@@ -341,6 +341,9 @@ const gameData = {
         ]
     }
 };
+
+let pageStartTime = Date.now();
+let totalPlayTime = parseFloat(localStorage.getItem("playerTime")) || 0;
 let backgroundImg = document.getElementById("image");
 
 const storyText = document.getElementById("dialogue");
@@ -367,13 +370,22 @@ function setUpUseButton(){
 }
 
 function startGame() {
-    showScene("start");
+	showScene("start");
+	//load in player inventory
+	playerInventory.renderInventory();
+	let x = localStorage.getItem("sessionId");
+	updateUserFloorInDB(x, 1); //update the user floor in the database
 }
+function getCurrentSessionId() {
+	return localStorage.getItem("sessionId");
+}
+
 
 function showScene(sceneKey) {
     const scene = gameData[sceneKey];
     console.log(scene.img);
-    backgroundImg.src = "/media/background/" + scene.img;
+    document.getElementById("image").src = "media/background/" + scene.img;
+    //backgroundImg.src = "/media/background/" + scene.img;
     tw = new TypeWriter("dialogue", scene.text);
     tw.start();
     optionsDiv.innerHTML = "";
@@ -449,8 +461,24 @@ function startMinigame(option){
         minigame.startMinigame1(option);
     }
 }
-function nextFloor(){
-    window.location.href = "floor2.html";
+function nextFloor() {
+	playerInventory.saveInventoryToDB();
+
+	let pageEndTime = Date.now();
+	let timeSpentThisPage = (pageEndTime - pageStartTime) / 1000;
+
+	let currentTotalTime = parseFloat(localStorage.getItem("playerTime")) || 0;
+	let newTotalTime = currentTotalTime + timeSpentThisPage;
+
+	console.log("Time spent on this page:", timeSpentThisPage, "seconds");
+	console.log("New total play time:", newTotalTime, "seconds");
+	console.log("Current total play time:", currentTotalTime, "seconds");
+
+	localStorage.setItem("playerTime", newTotalTime);
+
+	setPlayerTime(newTotalTime);
+
+	window.location.href = "floor2.html"; // change to next floor
 }
 
 

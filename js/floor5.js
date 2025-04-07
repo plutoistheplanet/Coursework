@@ -3,6 +3,8 @@ let startedRoom1 = "tryRoom1";
 let startedRoom2 = "tryRoom2";
 let counter = 0;
 let significantEventsList = [];
+let pageStartTime = Date.now();
+let totalPlayTime = parseFloat(localStorage.getItem("playerTime")) || 0;
 const gameData = {
 	start: {
 		img: "hallway2.jpg",
@@ -205,13 +207,14 @@ function startGame() {
 	updateUserFloorInDB(x, 5); //update the user floor in the database
 }
 
+
 function getCurrentSessionId() {
 	return localStorage.getItem("sessionId");
 }
 
 function showScene(sceneKey) {
 	const scene = gameData[sceneKey];
-	backgroundImg.src = "media/background/" + scene.img;
+	backgroundImg.src = "media/img/background/" + scene.img;
 	tw = new TypeWriter("dialogue", scene.text);
 	tw.start();
 	optionsDiv.innerHTML = "";
@@ -263,11 +266,39 @@ function nextScene(option) {
 //link the js file called util.js for DB connectivity
 function nextFloor() {
 	playerInventory.saveInventoryToDB();
-	window.location.href = "test.html"; //next floor page
+
+	let pageEndTime = Date.now();
+	let timeSpentThisPage = (pageEndTime - pageStartTime) / 1000;
+
+	let currentTotalTime = parseFloat(localStorage.getItem("playerTime")) || 0;
+	let newTotalTime = currentTotalTime + timeSpentThisPage;
+
+	console.log("Time spent on this page:", timeSpentThisPage, "seconds");
+	console.log("New total play time:", newTotalTime, "seconds");
+	console.log("Current total play time:", currentTotalTime, "seconds");
+
+	localStorage.setItem("playerTime", newTotalTime);
+
+	setPlayerTime(newTotalTime);
+
+	window.location.href = "floor6.html"; // change to next floor
 }
 function gameOver() {
 	playerInventory.saveInventoryToDB();
-	window.location.href = ""; //game stats page
+	let pageEndTime = Date.now();
+	let timeSpentThisPage = (pageEndTime - pageStartTime) / 1000;
+
+	let currentTotalTime = parseFloat(localStorage.getItem("playerTime")) || 0;
+	let newTotalTime = currentTotalTime + timeSpentThisPage;
+
+	console.log("Time spent on this page:", timeSpentThisPage, "seconds");
+	console.log("New total play time:", newTotalTime, "seconds");
+	console.log("Current total play time:", currentTotalTime, "seconds");
+
+	localStorage.setItem("playerTime", newTotalTime);
+
+	setPlayerTime(newTotalTime);
+	//window.location.href = "test.html"; //change to game stats page
 }
 
 function next(next) {
@@ -441,5 +472,6 @@ function startMinigame(option) {
 	}
 }
 //#endregion
+
 setUpUseButton();
 startGame();

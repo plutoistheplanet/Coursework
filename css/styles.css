@@ -250,3 +250,120 @@ input[type="text"] {
     outline: none;
     color:var(--p-color);
 }
+
+
+
+
+
+
+
+
+
+/* Add to styles.css */
+#combat-popup {
+    background: rgba(0,0,0,0.95);
+    border: 2px solid #00ff9d;
+    width: 70%;
+    max-width: 800px;
+    color: #00ff9d;
+    font-family: 'Courier New', monospace;
+}
+
+#combat-status {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    margin: 1rem 0;
+}
+
+/* Modify the .health-bar class */
+.health-bar {
+    background: #1a1a1a;
+    height: 25px;
+    border: 1px solid #00ff9d;
+    width: 200px; /* Add fixed width */
+}
+
+/* Ensure health fill elements use block display */
+#player-health, #enemy-health {
+    display: block;
+    height: 100%;
+    transition: width 0.3s ease; /* Add smooth animation */
+}
+
+/* COMBAT ANIMATIONS */
+@keyframes hit-shake {
+    0% { transform: translateX(0); }
+    25% { transform: translateX(-15px) scale(1.05); }
+    50% { transform: translateX(15px) scale(0.95); }
+    75% { transform: translateX(-10px) scale(1.02); }
+    100% { transform: translateX(0) scale(1); }
+}
+
+.player-hit-animation {
+    animation: hit-shake 0.4s ease;
+    background-color: rgba(255, 105, 97, 0.1) !important; /* Soft coral */
+
+}
+
+.enemy-hit-animation {
+    animation: hit-shake 0.4s ease;
+background-color: rgba(255, 105, 97, 0.1) !important; /* Soft coral */
+
+}
+
+.combatant {
+    transition: all 0.3s ease;
+    padding: 10px;
+    border-radius: 5px;
+}
+#player-health { background: #00ff9d; }
+#enemy-health { background: #ff0044; }
+
+#combat-log {
+    height: 150px;
+    overflow-y: auto;
+    border: 1px solid #00ff9d;
+    padding: 1rem;
+    margin: 1rem 0;
+}
+
+.combat-btn {
+    background: #1a1a1a;
+    border: 1px solid #00ff9d;
+    color: #00ff9d;
+    margin: 0 0.5rem;
+    padding: 0.8rem 1.5rem;
+    transition: all 0.3s;
+}
+
+.combat-close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    padding: 5px 10px;
+    background: #ff4444;
+    border: none;
+    cursor: pointer;
+}
+
+.combat-btn:hover {
+    background: #00ff9d;
+    color: #000;
+}
+
+#combat-inventory {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(0,0,0,0.9);
+    padding: 2rem;
+    border: 2px solid #00ff9d;
+}
+
+.combat-item {
+    display: flex;
+    align-items: center;
+    margin: 0.5rem 0;
+}

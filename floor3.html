@@ -7,7 +7,7 @@
     <body>
         <div id="layout">
             <div id="container-leftColumn">
-                <h1>Game Name Here</h1>
+                <h1>Neon Rebellion</h1>
                 <p>Map</p>
                 <div id="map">
                     <cell id="finalFloor"></cell>
@@ -35,14 +35,16 @@
                         <div id="inventory"></div>
                         <div id="container-inventoryUse">
                             <cell id="selectedItem"></cell>
-                            <button id="useButton">View</button>
+                            <button id="useButton">View Item</button>   
+<button id="discardButton">Discard Item</button>
+<button id="returnButton">Return to Inventory</button>
                         </div>
                     </div>
                 </div>
                 <div id="container-bottomHalf">
                     <div id="container-middleDialogue">
                         <div id="dialogueBox">
-                            <div id="dialogue" overflow-y: auto></div>
+                            <p id="dialogue"></p>
                         </div>
                     </div>
                 </div>
@@ -52,23 +54,60 @@
         <div id="popup" class="popup">
             <div id="myProgress">
                 <div id="myBar"></div> 
-                <p id="instruction-text">TYPE : KICK</p>
+                <p id="instruction-text">Input needed...</p>
                 <input type="text" id="userInput" placeholder="Type here..."/>
                 <p id="outcome" class="outcome"></p>
                 <br><br>
             </div>
         </div>
-        <div id="container-document">
-            <div id="documentContent"></div>
+<div id="combat-popup" class="popup">
+    <div class="combat-container">
+        <div id="combat-header">
+            <h1>Boss Combat!</h1>
+            <div id="combat-status">
+                <div class="combatant">
+                    <h3>Player</h3>
+                    <div class="health-bar">
+                        <div id="player-health"></div>
+                    </div>
+                    <div id="player-effects"></div>
+                </div>
+                
+                <div class="combatant">
+                    <h3 id="enemy-name">Cyber Abomination</h3>
+                    <div class="health-bar">
+                        <div id="enemy-health"></div>
+                    </div>
+                </div>
+            </div>
         </div>
+
+        <div id="combat-log"></div>
+
+        <div id="combat-controls">
+            <button class="combat-btn" id="combat-attack">Attack</button>
+            <button class="combat-btn" id="combat-defend">Defend</button>
+            <button class="combat-btn" id="combat-item">Item</button>
+        </div>
+
+        <!-- Integrated Inventory -->
+        <div id="combat-inventory" style="display:none;">
+            <h3>Combat Inventory</h3>
+            <div id="combat-items"></div>
+<button id="combat-close" class="combat-close-btn">X</button>
+          
+    </div>
+        </div>
+    </div
         
-        <script src="js/preferences.js"></script>
-        <script src="js/db.js"></script>
-        <script src="js/util.js"></script>
-        <script src="js/gameDocument.js" defer></script>
-        <script src="js/minigame1.js" defer></script>
-        <script src="js/typewriter.js" ></script>
-        <script src="js/inventory.js"></script>
-        <script src="js/floor1.js"></script>
+ <!-- SCRIPTS IN THIS ORDER -->
+    <script src="js/util.js"></script>
+    <script src="js/db.js"></script>
+    <script src="js/preferences.js"></script>
+    <script src="js/minigame1.js"></script>
+    <script src="js/typewriter.js"></script>
+    <script src="js/inventory.js"></script>
+    <script src="js/floor3.js"></script>
+        
     </body>
 </html>

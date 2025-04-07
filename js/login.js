@@ -46,7 +46,7 @@ document.getElementById("loginForm").addEventListener("submit", async function (
 			localStorage.setItem("statisticsId", user.statisticsID);
 
 			//chnage to the main menu page
-			window.location.href = "floor5.html";
+			window.location.href = "mainMenu.html";
 		} else {
 			document.getElementById("loginMessage").textContent = "Invalid username or password.";
 		}

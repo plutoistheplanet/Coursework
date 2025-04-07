@@ -5,8 +5,6 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>Login - Text Adventure</title>
 		<link rel="stylesheet" href="css/loginRegisterStyles.css" />
-		<script src="js/login.js" defer></script>
-		<script src="js/util.js" defer></script>
 	</head>
 	<body>
 		<div class="container">
@@ -22,12 +20,16 @@
 				<div class="forgot-password">
 					<a href="#" id="forgotPasswordBtn">Forgot Password?</a>
 				</div>
-				<div id="loginMessage" style="color:red; margin-top:10px;"></div>"
+				<div id="loginMessage" style="color: red; margin-top: 10px"></div>
 				<div class="button-container">
 					<button type="button" id="newPlayerBtn">New Player?</button>
 					<button type="submit">Login</button>
 				</div>
 			</form>
 		</div>
+		<script src="js/preferences.js"></script>
+        <script src="js/db.js"></script>
+		<script src="js/util.js"></script>
+		<script src="js/login.js"></script>
 	</body>
 </html>

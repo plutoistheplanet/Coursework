@@ -275,6 +275,8 @@ const gameData = {
 };
 
 // DOM Logic
+let pageStartTime = Date.now();
+let totalPlayTime = parseFloat(localStorage.getItem("playerTime")) || 0;
 let backgroundImg = document.getElementById("image");
 const storyText = document.getElementById("dialogue");
 const optionsDiv = document.getElementById("options");
@@ -301,16 +303,22 @@ function setUpUseButton() {
 		}
 	});
 }
-
 function startGame() {
 	currentFloorHallway = "start";
 	showScene("start");
+	//load in player inventory
+	playerInventory.renderInventory();
+	let x = localStorage.getItem("sessionId");
+	updateUserFloorInDB(x, 4); //update the user floor in the database
+}
+function getCurrentSessionId() {
+	return localStorage.getItem("sessionId");
 }
 
 function showScene(sceneKey) {
 	//Chris wrote this first if statement
 	if(sceneKey == "floor5.html"){
-		window.location.href = "floor5.html";
+		nextFloor();
 	}
 
 	if (!gameData[sceneKey]) {
@@ -358,6 +366,25 @@ function nextScene(option) {
 		}
 		showScene(nextSceneKey);
 	}
+}
+function nextFloor() {
+	playerInventory.saveInventoryToDB();
+
+	let pageEndTime = Date.now();
+	let timeSpentThisPage = (pageEndTime - pageStartTime) / 1000;
+
+	let currentTotalTime = parseFloat(localStorage.getItem("playerTime")) || 0;
+	let newTotalTime = currentTotalTime + timeSpentThisPage;
+
+	console.log("Time spent on this page:", timeSpentThisPage, "seconds");
+	console.log("New total play time:", newTotalTime, "seconds");
+	console.log("Current total play time:", currentTotalTime, "seconds");
+
+	localStorage.setItem("playerTime", newTotalTime);
+
+	setPlayerTime(newTotalTime);
+
+	window.location.href = "floor5.html"; // change to next floor
 }
 
 setUpUseButton();

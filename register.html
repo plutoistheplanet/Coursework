@@ -4,9 +4,6 @@
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>Register - Text Adventure</title>
-		<link rel="stylesheet" href="css/loginRegisterStyles.css" />
-		<script src="js/register.js" defer></script>
-		<script src="js/util.js" defer></script>
 	</head>
 	<body>
 		<div class="container">
@@ -19,7 +16,7 @@
 					<input
 						type="password"
 						id="password"
-						placeholder="Password"
+						placeholder="Passworxd"
 						required
 						title="Password must be at least 8 characters long and include at least 1 number."
 					/>
@@ -35,12 +32,18 @@
 					/>
 					<span class="toggle-password" onclick="togglePasswordVisibility(this)">👁️</span>
 				</div>
-				<div id="registerMessage" style="color:red; margin-top:10px;"></div>"
+				<div id="registerMessage" style="color: red; margin-top: 10px"></div>
 				<div class="button-container">
 					<button id="alreadyPlayerBtn">Already a Player?</button>
 					<button type="submit">Register</button>
 				</div>
 			</form>
 		</div>
+		
+		<script src="js/preferences.js"></script>
+        <script src="js/db.js"></script>
+		<script src="js/util.js"></script>
+		<link rel="stylesheet" href="css/loginRegisterStyles.css" />
+		<script src="js/register.js"></script>
 	</body>
 </html>
