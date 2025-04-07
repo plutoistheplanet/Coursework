@@ -8,7 +8,9 @@ class inventory {
 			letterOpener: "media/img/items/letterOpener.png",
             secretIngredient: "media/img/items/page.png",
             page1: "media/img/items/page.png",
-            page2: "media/img/items/page.png"
+            page2: "media/img/items/page.png",
+			bandage: "media/img/items/smallMedpack.png",
+			key: "media/img/items/key1.png"
 		};
 		this.loadInventory();
 	}
