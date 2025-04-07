@@ -36,7 +36,6 @@ const gameData = {
     finalRoom2: {
         img: "meetingRoom.jpg",
         text: `The man congratulates you for making it all the way to the top.<br/><br/>
-                something something something.<br/><br/>
                 He mentions that he has an offer he would like to make.`,
         options: [
             { text: "Keep listening", next: "finalRoom3"}

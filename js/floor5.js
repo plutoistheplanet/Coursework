@@ -88,7 +88,7 @@ const gameData = {
         Do you take it from him and leave or leave him be? (+1 Energy Can)`,
 		options: [
 			{
-				text: "Take the medpack",
+				text: "Take the energy can",
 				next: "floor",
 				significantChoice: "You stole the wounded mans last hope...",
 				item: "can", //chnage to medpack later
@@ -214,7 +214,7 @@ function getCurrentSessionId() {
 
 function showScene(sceneKey) {
 	const scene = gameData[sceneKey];
-	backgroundImg.src = "media/img/background/" + scene.img;
+	backgroundImg.src = "media/background/" + scene.img;
 	tw = new TypeWriter("dialogue", scene.text);
 	tw.start();
 	optionsDiv.innerHTML = "";
