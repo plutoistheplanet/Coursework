@@ -432,13 +432,6 @@ function setUpUseButton(){
         alert("No item selected.");
     }
     });
-// Add discard button listener
-    document.getElementById("discardButton").addEventListener("click", () => {
-        playerInventory.discardItem();
-    });
- document.getElementById("returnButton").addEventListener("click", () => {
-        playerInventory.returnToInventory();
-    });
 }
 
 function startGame() {

@@ -52,7 +52,7 @@ function endGame() {
         gameEnded = true;
 
         // Save time to local storage
-        localStorage.setItem("playerTime", timePlayed);
+        //localStorage.setItem("playerTime", timePlayed);
 
         // Get time from local storage
         const storedTime = localStorage.getItem("playerTime");
@@ -95,6 +95,7 @@ function endGame() {
 `;
 
     statsDisplay.style.display = "block";
+    
     }
 }
 
@@ -124,13 +125,12 @@ function resetGame() {
     statsDisplay.style.display = "none";  // Hide stats display
     clearInterval(timer);  // Stop any running timer
 }
-function goToMainMenu() {
-    window.location.href = "mainmenu.html";
+function goToLogin() {
+    window.location.href = "login.html";
 }
 function gotoLevel1() {
     window.location.href = "Floor1.html"; // change this to the correct html for floor 1
 }
 // Event listeners for buttons
-startButton.addEventListener("click", startGame);
 endButton.addEventListener("click", endGame);
 resetButton.addEventListener("click", resetGame);

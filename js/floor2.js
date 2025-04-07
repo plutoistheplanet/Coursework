@@ -219,7 +219,7 @@ const gameData = {
         img: "hallwayStorage.jpg",
         text: `The safe clicks, and you open it to find a ripped piece of paper...`,
         options: [
-            { text: "Take the paper", next: "Room2PaperTake", item: "paper2" },
+            { text: "Take the paper", next: "room2PaperTake", item: "paper2" },
             { text: "Leave the room", next: "floor"}
         ]
     },
@@ -375,7 +375,7 @@ function getCurrentSessionId() {
 
 function showScene(sceneKey) {
     const scene = gameData[sceneKey];
-    backgroundImg.src = "media/img/background/" + scene.img;  // <-- Make sure scene.img exists
+    backgroundImg.src = "media/background/" + scene.img;  // <-- Make sure scene.img exists
     tw = new TypeWriter("dialogue", scene.text);
     tw.start();
     optionsDiv.innerHTML = ""; // Clears previous buttons
@@ -420,22 +420,28 @@ function next(next){
 }
     function startMinigame(option) {
         if (option.minigame == "opensafe") {
-            const minigame = new Minigame(
-                ["0451"],
+            const minigame = new Minigame(["0", "4", "5", "1"],
+                "Correct Code...<br/><br/>Opening...",
+                "Incorrect...<br/><br/>",
                 document.getElementById("userInput"),
                 document.getElementById("popup"),
-                document.getElementById("outcome")
-            );
-            minigame.startMinigame2(option);
+                document.getElementById("outcome"),
+                document.getElementById("myBar"),
+                document.getElementById("instruction-text")
+                );
+            minigame.startMinigame1(option);
         }
         if (option.minigame == "elevatorCode") {
-            const minigame = new Minigame(
-                ["xyzzy"],
+            const minigame = new Minigame(["x", "y", "z", "z", "y"],
+                "Correct Code...<br/><br/>Opening...",
+                "Incorrect...<br/><br/>",
                 document.getElementById("userInput"),
                 document.getElementById("popup"),
-                document.getElementById("outcome")
-            );
-            minigame.startMinigame2(option);
+                document.getElementById("outcome"),
+                document.getElementById("myBar"),
+                document.getElementById("instruction-text")
+                );
+            minigame.startMinigame1(option);
         }
     }
     function nextFloor() {
