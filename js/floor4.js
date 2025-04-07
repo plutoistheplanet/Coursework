@@ -330,7 +330,7 @@ function showScene(sceneKey) {
 	currentSceneKey = sceneKey;
 
 	const scene = gameData[sceneKey];
-	backgroundImg.src = "media/img/" + scene.img;
+	backgroundImg.src = "media/" + scene.img;
 	optionsDiv.innerHTML = "";
 
 	const resolvedText = typeof scene.text === "function" ? scene.text() : scene.text;

@@ -271,20 +271,34 @@ class inventory {
 	}
 
 
-	
-	// Add these new methods
-    markAsCollected(roomId, itemName) {
-        if (!this.collectedItems[roomId]) this.collectedItems[roomId] = [];
-        if (!this.collectedItems[roomId].includes(itemName)) {
-            this.collectedItems[roomId].push(itemName);
-            sessionStorage.setItem("collectedItems", JSON.stringify(this.collectedItems));
-        }
-    }
 
-    isCollected(roomId, itemName) {
-        return this.collectedItems[roomId] && this.collectedItems[roomId].includes(itemName);
-    }// Add this method to prevent recollecting items
+	// // Add these new methods
+    // markAsCollected(roomId, itemName) {
+    //     if (!this.collectedItems[roomId]) this.collectedItems[roomId] = [];
+    //     if (!this.collectedItems[roomId].includes(itemName)) {
+    //         this.collectedItems[roomId].push(itemName);
+    //         sessionStorage.setItem("collectedItems", JSON.stringify(this.collectedItems));
+    //     }
+    // }
+
+    // isCollected(roomId, itemName) {
+    //     return this.collectedItems[roomId] && this.collectedItems[roomId].includes(itemName);
+    // }// Add this method to prevent recollecting items
     hasItemCollected(itemName) {
         return this.innerInventory.includes(this.items[itemName]);
     }
+	
+
+	markAsCollected(room, itemKey) {
+		const key = `${room}_${itemKey}`;
+		const collected = JSON.parse(sessionStorage.getItem('collectedItems') || '{}');
+		collected[key] = true;
+		sessionStorage.setItem('collectedItems', JSON.stringify(collected));
+	}
+	 
+	isCollected(room, itemKey) {
+		const key = `${room}_${itemKey}`;
+		const collected = JSON.parse(sessionStorage.getItem('collectedItems') || '{}');
+		return !!collected[key];
+	}
 }
