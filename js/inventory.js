@@ -10,7 +10,9 @@ class inventory {
             page1: "media/img/items/page.png",
             page2: "media/img/items/page.png",
 			bandage: "media/img/items/smallMedpack.png",
-			key: "media/img/items/key1.png"
+			room: "media/img/items/key.png",
+			room3Key: "media/img/items/key1.png",
+			room2Key: "media/img/items/key2.png"
 		};
 		this.loadInventory();
 	}
@@ -294,6 +296,7 @@ class inventory {
 		const collected = JSON.parse(sessionStorage.getItem('collectedItems') || '{}');
 		collected[key] = true;
 		sessionStorage.setItem('collectedItems', JSON.stringify(collected));
+		console.log(sessionStorage.getItem(`collectedItems`));
 	}
 	 
 	isCollected(room, itemKey) {

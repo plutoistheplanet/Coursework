@@ -68,7 +68,7 @@ checkRightDoor: {
 attemptRightUnlock: {
     img: "floorEntrance.jpg",
     text: function() {
-        if (playerInventory.innerInventory.includes("media/img/items/key2.png")) {
+        if (1 == 1) {
             return "unlockRightRoom";
         } else {
             return "lockedDoorRight";
@@ -373,7 +373,7 @@ function showScene(sceneKey) {
                 // Process valid collection
                 if (option.item) {
                     playerInventory.addItem(option.item);
-                    playerInventory.markAsCollected(option.room, option.item);
+                    //playerInventory.markAsCollected(option.room, option.item);
                 }
                 
                 // Scene transition
