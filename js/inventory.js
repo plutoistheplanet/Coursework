@@ -272,20 +272,6 @@ class inventory {
 		return this.innerInventory.includes(this.items[itemName]);
 	}
 
-
-
-	// // Add these new methods
-    // markAsCollected(roomId, itemName) {
-    //     if (!this.collectedItems[roomId]) this.collectedItems[roomId] = [];
-    //     if (!this.collectedItems[roomId].includes(itemName)) {
-    //         this.collectedItems[roomId].push(itemName);
-    //         sessionStorage.setItem("collectedItems", JSON.stringify(this.collectedItems));
-    //     }
-    // }
-
-    // isCollected(roomId, itemName) {
-    //     return this.collectedItems[roomId] && this.collectedItems[roomId].includes(itemName);
-    // }// Add this method to prevent recollecting items
     hasItemCollected(itemName) {
         return this.innerInventory.includes(this.items[itemName]);
     }

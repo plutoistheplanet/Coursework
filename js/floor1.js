@@ -31,7 +31,7 @@ const gameData = {
         ]
     },
     tryRoom1: {
-        img: "computerRoom.jpg",
+        img: "hallway1.jpg",
         text: `You try the door and it opens.<br/><br/>
                 The room inside is a stereotypical open plan office.<br/><br/>
                 Enter the room?`,
@@ -87,7 +87,7 @@ const gameData = {
 
 
     tryRoom3: {
-        img: "empytyRoom.jpg",
+        img: "emptyRoom.jpg",
         text: `You try the door and it swings open.<br/><br/>
                 Enter the room?`,
         options: [
@@ -142,7 +142,7 @@ const gameData = {
         ]
     },
     room3: {
-        img: "manBookshelf.jpg",
+        img: "manBookshelf (2).jpg",
         text: `You return to the room.<br/><br/>
                 Bill is waiting for you. <br/><br/>
                 Talk to Bill?`,

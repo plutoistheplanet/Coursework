@@ -262,7 +262,7 @@ const gameData = {
 	},
 
 	nextLevel: {
-		img: "background/elevator.jpg",
+		img: "background/elevators.jpg",
 		text: `Congratulations! You've reached level 5!`,
 		options: [
 			{ text: "Exit the elevator", next: "floor5.html" }] // add next level to connect the floors
