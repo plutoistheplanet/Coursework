@@ -1,0 +1,75 @@
+body {
+	font-family: Arial, sans-serif;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 100vh;
+	margin: 0;
+	background-color: #000;
+	color: white;
+}
+.container {
+	text-align: center;
+	background-color: #222;
+	padding: 20px;
+	border-radius: 10px;
+	box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+}
+
+.title {
+	font-size: 2rem;
+	font-weight: bold;
+	margin-bottom: 20px;
+	border-bottom: 2px solid #4caf50;
+}
+
+.achievement {
+	margin-bottom: 30px;
+	font-size: 1.2rem;
+}
+
+button {
+	background-color: #4caf50;
+	color: white;
+	padding: 10px 20px;
+	font-size: 1rem;
+	border: none;
+	cursor: pointer;
+	margin: 10px;
+	border-radius: 5px;
+}
+
+button:hover {
+	background-color: #45a049;
+}
+
+#statsDisplay {
+	margin-top: 20px;
+	font-size: 1.2rem;
+	background-color: #222 !important;
+	color: white !important;
+	padding: 15px;
+	border-radius: 8px;
+	white-space: pre-wrap;
+	width: 100%;
+	max-width: 400px;
+	margin: 0 auto;
+	font-family: monospace;
+	display: none;
+	border: 1px solid #4caf50;
+	box-shadow: 0 0 10px rgba(76, 175, 80, 0.3);
+}
+
+.game-over-title {
+	color: white;
+	font-size: 1.8rem;
+	margin-bottom: 15px;
+	border-bottom: 2px solid #4caf50;
+	padding-bottom: 5px;
+}
+.button-row {
+	display: flex;
+	justify-content: center;
+	gap: 10px;
+	margin-top: 20px;
+}

@@ -106,7 +106,7 @@ const gameData = {
         ]
     },
     talkToMan1: {
-
+        img: "man1.jpg",
         text: `You walk up behind him.<br/><br/>
         Man: Where is it!?<br/><br/>
         Speak to the man?`,
@@ -116,6 +116,7 @@ const gameData = {
         ]
     },
     getSecretIngredientQuest: {
+        img: "man1.jpg",
         text: `"I'm looking for secret the secret ingredient of a Creme Brulee."<br/><br/>
         "My colleague Jim hid it from me!"<br/><br/>`,
         options: [
@@ -123,6 +124,7 @@ const gameData = {
         ]
     },
     getSecretIngredientQuest2: {
+        img: "man2.jpg",
         text: `"The only other room I haven't checked is Room 2."<br/><br/>
         "Take this key to open the door."<br/><br/>
         "Go and find it there and I'll let you go to the next Floor."`,
@@ -131,6 +133,7 @@ const gameData = {
         ]
     },
     introduceName: {
+        img: "man1.jpg",
         text: `He jumped as you spoke.<br/><br/>
         "You startled me!<br/><br/>"
         "I'm Bill. Would you be able to help me find something?<br/><br/>`,
@@ -139,7 +142,7 @@ const gameData = {
         ]
     },
     room3: {
-        img: "emptyRoom.jpg",
+        img: "manBookshelf.jpg",
         text: `You return to the room.<br/><br/>
                 Bill is waiting for you. <br/><br/>
                 Talk to Bill?`,
@@ -149,6 +152,7 @@ const gameData = {
         ]
     },
     room3CheckForItem: {
+        img: "manBookshelf (2).jpg",
         text: `Bill: So he returns?!<br/><br/>
         Bill: Do you have the secret ingredient?`,
         options: [
@@ -164,6 +168,7 @@ const gameData = {
         ]
     },
     comeBackWhenItem: {
+        img:"manBookshelf (2).jpg",
         text: `Bill: So he returns?!<br/><br/>
         Bill: Come back when you have the item.`,
         options: [
@@ -202,7 +207,7 @@ const gameData = {
         ]
     },
     room2: {
-        img: "hallwayStorage.jpg",
+        img: "man1.jpg",
         text: `You enter the room.<br/><br/>
         A man sits in the centre clutching a piece of paper with the words "Secret Ingredient" written on the back.<br/><br/>
         Talk to the man...`,
@@ -212,7 +217,7 @@ const gameData = {
         ]
     },
     room2Option1: {
-        img: "hallwayStorage.jpg",
+        img: "man2.jpg",
         text: `Man: NO!<br/><br/>
         Man: You'll never make the perfect Creme Brulee!<br/><br/>
         Unless you have the passcode hidden in room 1...<br/><br/>
@@ -225,7 +230,7 @@ const gameData = {
         ]
     },
     digit1: {
-        img: "hallwayStorage.jpg",
+        img: "man2.jpg",
         text: `Enter the first digit of the passcode.`,
         options: [
             { text: "1", next: "incorrect" },
@@ -235,7 +240,7 @@ const gameData = {
         ]
     },
     digit2: {
-        img: "hallwayStorage.jpg",
+        img: "man1.jpg",
         text: `Man: Lucky guess!<br/><br/>
         Enter the second digit of the passcode.`,
         options: [
@@ -246,7 +251,7 @@ const gameData = {
         ]
     },
     digit3:{
-        img: "hallwayStorage.jpg",
+        img: "man2.jpg",
         text: `Man: An even luckier guess!<br/><br/>
         Enter the third digit of the passcode.`,
         options: [
@@ -257,7 +262,7 @@ const gameData = {
         ]
     },
     digit4:{ 
-        img: "hallwayStorage.jpg",
+        img: "man1.jpg",
         text: `Man: That was the luckiest guess possible!<br/><br/>
         Enter the last digit of the passcode.`,
         options: [
@@ -268,7 +273,7 @@ const gameData = {
         ]
     },
     incorrect: {
-        img: "hallwayStorage.jpg",
+        img: "man2.jpg",
         text: `Man: INCORRECT!<br/><br/>
         Come back when you know the passcode!<br/><br/>
         It's hidden on this floor.`,
@@ -289,7 +294,7 @@ const gameData = {
         ]
     },
     completed:{
-        img: "hallwayStorage.jpg",
+        img: "man1.jpg",
         text: `Man: Fine...<br/><br/>
         The man drops the paper as he walks out of the room.<br/><br/>
         Pickup the paper?`,
@@ -370,6 +375,7 @@ function setUpUseButton(){
 }
 
 function startGame() {
+    localStorage.setItem("levelReached", "Floor: 1");
 	showScene("start");
 	//load in player inventory
 	playerInventory.renderInventory();

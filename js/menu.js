@@ -136,6 +136,13 @@ document.getElementById("screenReader").addEventListener("change", function () {
 //light mode
 document.getElementById("lightMode").addEventListener("change", function () {
 	document.body.classList.toggle("lightMode", this.checked);
+	if(this.checked){
+		applyTheme("lightMode");
+	}
+	else{
+		applyTheme("defaultMode");
+	}
+
 });
 
 //minimal effects

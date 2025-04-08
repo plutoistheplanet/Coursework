@@ -304,6 +304,7 @@ function setUpUseButton() {
 	});
 }
 function startGame() {
+	localStorage.setItem("levelReached", "Floor: 4");
 	currentFloorHallway = "start";
 	showScene("start");
 	//load in player inventory
@@ -330,7 +331,7 @@ function showScene(sceneKey) {
 	currentSceneKey = sceneKey;
 
 	const scene = gameData[sceneKey];
-	backgroundImg.src = "media/img/" + scene.img;
+	backgroundImg.src = "media/" + scene.img;
 	optionsDiv.innerHTML = "";
 
 	const resolvedText = typeof scene.text === "function" ? scene.text() : scene.text;

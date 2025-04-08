@@ -8,7 +8,11 @@ class inventory {
 			letterOpener: "media/img/items/letterOpener.png",
             secretIngredient: "media/img/items/page.png",
             page1: "media/img/items/page.png",
-            page2: "media/img/items/page.png"
+            page2: "media/img/items/page.png",
+			bandage: "media/img/items/smallMedpack.png",
+			room: "media/img/items/key.png",
+			room3Key: "media/img/items/key1.png",
+			room2Key: "media/img/items/key2.png"
 		};
 		this.loadInventory();
 	}
@@ -266,5 +270,38 @@ class inventory {
 	}
 	findItem(itemName) {
 		return this.innerInventory.includes(this.items[itemName]);
+	}
+
+
+
+	// // Add these new methods
+    // markAsCollected(roomId, itemName) {
+    //     if (!this.collectedItems[roomId]) this.collectedItems[roomId] = [];
+    //     if (!this.collectedItems[roomId].includes(itemName)) {
+    //         this.collectedItems[roomId].push(itemName);
+    //         sessionStorage.setItem("collectedItems", JSON.stringify(this.collectedItems));
+    //     }
+    // }
+
+    // isCollected(roomId, itemName) {
+    //     return this.collectedItems[roomId] && this.collectedItems[roomId].includes(itemName);
+    // }// Add this method to prevent recollecting items
+    hasItemCollected(itemName) {
+        return this.innerInventory.includes(this.items[itemName]);
+    }
+	
+
+	markAsCollected(room, itemKey) {
+		const key = `${room}_${itemKey}`;
+		const collected = JSON.parse(sessionStorage.getItem('collectedItems') || '{}');
+		collected[key] = true;
+		sessionStorage.setItem('collectedItems', JSON.stringify(collected));
+		console.log(sessionStorage.getItem(`collectedItems`));
+	}
+	 
+	isCollected(room, itemKey) {
+		const key = `${room}_${itemKey}`;
+		const collected = JSON.parse(sessionStorage.getItem('collectedItems') || '{}');
+		return !!collected[key];
 	}
 }

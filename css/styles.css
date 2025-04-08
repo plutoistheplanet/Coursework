@@ -1,16 +1,11 @@
-body.greenBlack {
+body.defaultMode {
     --bg-color: #000000;
     --p-color: #03A062;
 }
-body.blueBlack {
-    --bg-color: #fff;
-    --p-color: #65ffe8;
+body.lightMode {
+    --bg-color: #d8d8d8;
+    --p-color: #4fd9c4;
 }
-body.blueWhite {
-    --bg-color: #fff;
-    --p-color: #8cffe2;
-}
-  
 
 *{
     font-family: AppleChicagoFont;

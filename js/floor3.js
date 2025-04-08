@@ -1,4 +1,5 @@
-
+// Main game data structure containing all scenes, dialogues, and choices.
+// Each scene has associated images, text, and options that drive the narrative.
 const gameData = {
     start: {
         img: "floorEntrance.jpg",
@@ -41,7 +42,7 @@ checkMiddleDoor: {
 attemptMiddleUnlock: {
     img: "floorEntrance.jpg",
     text: function() {
-        if (playerInventory.innerInventory.includes("media/img/items/key1.png")) {
+        if (playerInventory.findItem("room2Key")) {
             return "unlockMiddleRoom";
         } else {
             return "lockedDoorMiddle";
@@ -68,7 +69,7 @@ checkRightDoor: {
 attemptRightUnlock: {
     img: "floorEntrance.jpg",
     text: function() {
-        if (playerInventory.innerInventory.includes("media/img/items/key2.png")) {
+        if (playerInventory.findItem("room3Key")) {
             return "unlockRightRoom";
         } else {
             return "lockedDoorRight";
@@ -77,7 +78,7 @@ attemptRightUnlock: {
     options: []  // Auto-progress based on text return
 },
 
-// Keep your existing locked/unlock scenes exactly as they were
+
 lockedDoorMiddle: {
     img: "floorEntrance.jpg",
     text: `The door remains locked. You need the Room 2 Key to proceed.`,
@@ -111,7 +112,7 @@ minibossFight: {
     combat: true,
     win: "elevatorScene",
     lose: "start",
-    options: [] // <-- Add this
+    options: [] 
 },
 
 hackSuccessScene: {
@@ -309,11 +310,14 @@ elevatorScene: {
    
     ]
 },
-};  // <-- This semicolon was in the wrong place
+};  
 
 
 function showScene(sceneKey) {
     const scene = gameData[sceneKey];
+
+console.log(`Loading scene`);
+
     if (!scene) {
         console.error(`Scene ${sceneKey} not found!`);
         return;
@@ -432,16 +436,10 @@ function setUpUseButton(){
         alert("No item selected.");
     }
     });
-// Add discard button listener
-    document.getElementById("discardButton").addEventListener("click", () => {
-        playerInventory.discardItem();
-    });
- document.getElementById("returnButton").addEventListener("click", () => {
-        playerInventory.returnToInventory();
-    });
 }
 
 function startGame() {
+    localStorage.setItem("levelReached", "Floor: 3");
 	showScene("start");
 	//load in player inventory
 	playerInventory.renderInventory();
@@ -483,6 +481,7 @@ function next(next){
 
 
     function startMinigame(option) {
+console.log(`Starting minigame`);
        if (option.minigame === "hackcomputer") {
  // Set flag when minigame is initiated
         sessionStorage.setItem('hackAttempted', 'true');
@@ -503,7 +502,7 @@ function next(next){
 }
 
 
-// Add to floor2.js
+
 class EnhancedCombat {
     constructor() {
         this.playerEffects = [];
@@ -511,7 +510,7 @@ class EnhancedCombat {
         this.combatActive = false;
         
         // Combat Elements
-        // Add close button handler
+        // close button handler
         document.getElementById('combat-close').addEventListener('click', () => {
             this.inventoryElement.style.display = 'none';
         });
@@ -697,17 +696,23 @@ enemyTurn() {
         
         this.inventoryElement.style.display = 'block';
     }
- // Add this new method
+ 
     closeInventory() {
         this.inventoryElement.style.display = 'none';
     }
 
 
 useInventoryItem(index) {
+    
     const itemKey = Object.keys(playerInventory.items).find(
         key => playerInventory.items[key] === playerInventory.innerInventory[index]
     );
-    
+    // Second check: General combat item whitelist
+    const validCombatItems = ["can", "letteropener"]; 
+    if (!validCombatItems.includes(itemKey.toLowerCase())) {
+        alert("You can't use this item in combat!");
+        return; // Exit without consuming item
+    }
     if(itemKey) {
 // Prevent key consumption
         if (["room2key", "room3key", "page"].includes(itemKey.toLowerCase())) {

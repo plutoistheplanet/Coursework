@@ -1,4 +1,4 @@
-const themes = ["greenBlack", "blueBlack", "BlueWhite"]; // add more themes here
+const themes = ["defaultMode", "lightMode"]; // add more themes here
 
 function applyTheme(theme) {
   // Remove all known themes
@@ -11,21 +11,13 @@ function applyTheme(theme) {
 
 function loadSavedTheme() {
   const savedTheme = localStorage.getItem("theme");
+  console.log(savedTheme);
   if (themes.includes(savedTheme)) {
     applyTheme(savedTheme);
   } else {
-    applyTheme("greenBlack"); // default theme
+    applyTheme("defaultMode"); // default theme
   }
 }
 
-// Optional: cycle through themes
-function cycleTheme() {
-  const current = localStorage.getItem("theme") || "greenBlack";
-  const index = themes.indexOf(current);
-  const nextTheme = themes[(index + 1) % themes.length];
-  applyTheme(nextTheme);
-}
-
 loadSavedTheme();
-
   
