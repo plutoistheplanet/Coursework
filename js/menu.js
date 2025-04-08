@@ -127,10 +127,10 @@ async function setInventoryToEmpty() {
 document.getElementById("lightMode").addEventListener("change", function () {
 	document.body.classList.toggle("lightMode", this.checked);
 	if(this.checked){
-		applyTheme("defaultMode");
+		applyTheme("lightMode");
 	}
 	else{
-		applyTheme("lightMode");
+		applyTheme("defaultMode");
 	}
 
 });
