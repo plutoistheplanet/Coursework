@@ -15,7 +15,7 @@ function loadSavedTheme() {
   if (themes.includes(savedTheme)) {
     applyTheme(savedTheme);
   } else {
-    applyTheme("defaultMode"); // default theme
+    applyTheme("lightMode"); // default theme
   }
 }
 
