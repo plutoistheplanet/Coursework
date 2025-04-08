@@ -5,7 +5,7 @@ class inventory {
 		this.items = {
 			can: "media/img/items/energycan.png",
 			page: "media/img/items/page.png",
-			letterOpener: "media/img/items/letterOpener.png",
+			letterOpener: "media/img/items/knife.png",
             secretIngredient: "media/img/items/page.png",
             page1: "media/img/items/page.png",
             page2: "media/img/items/page.png",
