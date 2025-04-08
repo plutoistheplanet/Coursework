@@ -122,16 +122,6 @@ async function setInventoryToEmpty() {
 	}
 }
 
-//settings
-//big text
-document.getElementById("biggerText").addEventListener("change", function () {
-	document.body.classList.toggle("biggerText", this.checked);
-});
-
-//screen reader
-document.getElementById("screenReader").addEventListener("change", function () {
-	document.body.classList.toggle("screenReader", this.checked);
-});
 
 //light mode
 document.getElementById("lightMode").addEventListener("change", function () {
@@ -143,9 +133,4 @@ document.getElementById("lightMode").addEventListener("change", function () {
 		applyTheme("lightMode");
 	}
 
-});
-
-//minimal effects
-document.getElementById("minimalEffects").addEventListener("change", function () {
-	document.body.classList.toggle("minimalEffects", this.checked);
 });
