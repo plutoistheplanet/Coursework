@@ -58,7 +58,7 @@ class Minigame {
 
     endGameSuccess() {
         this.inputField.style.display = "none";
-        this.outcome.textContent = "Access granted. Opening file explorer...";
+        this.outcome.textContent = "Access granted...";
         setTimeout(() => {
             this.closePopup();
             showScene(this.nextSceneSuccess);

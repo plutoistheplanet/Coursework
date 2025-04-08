@@ -25,7 +25,7 @@ const gameData = {
     floorAttack: {
         img: "floorEntrance.jpg",
         text: `You return to the hallway.<br/><br/>
-                In front of you is a hallway with three doors...<br/><br/>
+                In front of you is a hallway with two doors...<br/><br/>
                 Which door do you pick?`,
         options: [
             { text: "Open the first door", next: "tryRoom1Attack" },
@@ -208,7 +208,8 @@ const gameData = {
     },
     room2SafeFail: {
         img: "hallwayStorage.jpg",
-        text: `The safe beeps to indicate you have input an incorrect code.`,
+        text: `The safe beeps to indicate you have input an incorrect code.</br></br>
+        Maybe you should look at the shelves again...`,
         options: [
             { text: "Try to open the safe again", next: "room2SafeOpen", minigame: "opensafe", fail: "room2SafeFail" },
             { text: "Examine the shelves", next: "room2Shelves" },
@@ -269,7 +270,8 @@ const gameData = {
         },
         room2SafeFailAttack: {
             img: "hallwayStorage.jpg",
-            text: `The safe beeps to indicate you have input an incorrect code.`,
+            text: `The safe beeps to indicate you have input an incorrect code.</br></br>
+            Maybe you should look at the shelves again...`,
             options: [
                 { text: "Try to open the safe again", next: "room2SafeOpenAttack", minigame: "opensafe", fail: "room2SafeFailAttack" },
                 { text: "Examine the shelves", next: "room2ShelvesAttack" },
