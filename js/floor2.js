@@ -363,6 +363,7 @@ function setUpUseButton(){
 }
 
 function startGame() {
+    localStorage.setItem("levelReached", "Floor: 2");
 	showScene("start");
 	//load in player inventory
 	playerInventory.renderInventory();

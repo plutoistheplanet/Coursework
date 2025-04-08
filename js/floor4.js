@@ -304,6 +304,7 @@ function setUpUseButton() {
 	});
 }
 function startGame() {
+	localStorage.setItem("levelReached", "Floor: 4");
 	currentFloorHallway = "start";
 	showScene("start");
 	//load in player inventory

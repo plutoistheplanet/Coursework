@@ -4,30 +4,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Game Stats</title>
-    <link rel="stylesheet" href="css/statsStyle.css"> <!-- Link to the external CSS file -->
-</head>
-<body>
+    <link rel="stylesheet" href="css/statsStyle.css"> 
     <div class="container">
         <h1 class="title">Game Stats</h1>
 
         <div class="achievement">
             <p id="levelDisplay">Level: 1</p>
             <p id="timeDisplay">Time Played: 0 seconds</p>
-            <p id="pointsDisplay">Points: 0</p>
+            <p id="totPlayers">Total Players: 0</p>
+            <p id="bossDecisionDisplay">You helped the boss</p>
         </div>
 
-        <!-- Buttons -->
-        <!--<button class="btn" id="startButton">Start Game</button>-->
         <button class="btn" id="endButton">End Game</button>
-        <button class="btn" id="resetButton">Reset Game</button>
 
-        <!-- Stats Display Area (only shows when game ends) -->
         <div id="statsDisplay"></div>
     </div>
-
-    <script src="js/preferences.js"></script>
-    <script src="js/db.js"></script>
-    <script src="js/script.js"></script> <!-- Link to the external JavaScript file -->
-    <script src="js/util.js"></script> <!-- links database to script-->
+    <script src="js/util.js"></script> 
+    <script src="js/statsScript.js"></script> 
 </body>
 </html>

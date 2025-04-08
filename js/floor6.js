@@ -57,7 +57,7 @@ const gameData = {
                 And you ultimately come to the conclusion that this is within your best interests<br/><br/>
                 You accept the boss's offer.`,
         options: [
-            { text: "End Game", next: "start"}, //FOR CHRIS, THIS SHOULD LINK TO STATS PAGE INSTEAD OF BOSSFIGHT1
+            { text: "End Game", next: "statsPageBad"}, //FOR CHRIS, THIS SHOULD LINK TO STATS PAGE INSTEAD OF BOSSFIGHT1
         ]
     },
     bossFight1: {
@@ -74,7 +74,7 @@ const gameData = {
         text: "The final battle.",
         combat: true,
         win: "win1",
-        lose: "start", //FOR CHRIS THIS SHOULD LINK BACK TO THE STATS PAGE GAME OVER SCREEN
+        lose: "statsPageGood", //FOR CHRIS THIS SHOULD LINK BACK TO THE STATS PAGE GAME OVER SCREEN
         options: []
     },
     win1: {
@@ -82,7 +82,7 @@ const gameData = {
         text: `The boss overruling the evil corporation has been defeated.<br/><br/>
                 With this victory, society started healing.`,
         options: [
-            { text: "Game End", next: "start"}, //STATS PAGE FOR CHRIS
+            { text: "Game End", next: "statsPageGood"}, //STATS PAGE FOR CHRIS
         ]
     }
 
@@ -117,6 +117,10 @@ function setUpUseButton(){
 }
 
 function startGame() {
+    localStorage.setItem("levelReached", "Floor: 6");
+	playerInventory.renderInventory();
+	let x = localStorage.getItem("sessionId");
+	updateUserFloorInDB(x, 6); //update the user floor in the database
     showScene("start");
 }
 
@@ -161,6 +165,14 @@ function showScene(sceneKey) {
             if (option.id) button.id = option.id;
             
             button.onclick = () => {
+                if(option.next == "statsPageGood"){
+                    localStorage.setItem("bossDecision", "You challenged the Boss.");
+                    window.location.href = "stats.html";
+                }
+                if(option.next == "statsPageBad"){
+                    localStorage.setItem("bossDecision", "You joined the Boss.");
+                    window.location.href = "stats.html";
+                }
                 // Security checks first
                 if (option.item) {
                     // Prevent duplicate collection

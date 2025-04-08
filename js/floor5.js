@@ -200,6 +200,7 @@ function setUpUseButton() {
 }
 
 function startGame() {
+	localStorage.setItem("levelReached", "Floor: 5");
 	showScene("start");
 	//load in player inventory
 	playerInventory.renderInventory();
@@ -298,7 +299,7 @@ function gameOver() {
 	localStorage.setItem("playerTime", newTotalTime);
 
 	setPlayerTime(newTotalTime);
-	//window.location.href = "test.html"; //change to game stats page
+	window.location.href = "stats.html"; //change to game stats page
 }
 
 function next(next) {
