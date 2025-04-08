@@ -3,8 +3,8 @@ body.defaultMode {
     --p-color: #03A062;
 }
 body.lightMode {
-    --bg-color: #d8d8d8;
-    --p-color: #4fd9c4;
+    --bg-color: #ffffff;
+    --p-color: #00cafd;
 }
 
 *{
