@@ -1,8 +1,6 @@
 class Minigame {
     constructor(options, successMessage, failMessage, inputField, popup, outcome, elem, instructionText) {
-        this.options = options;
-        this.currentIndex = 0;
-
+        this.originalOptions = options;
         this.successMessage = successMessage;
         this.failMessage = failMessage;
 
@@ -13,19 +11,25 @@ class Minigame {
         this.instructionText = instructionText;
 
         this.maxWidth = 100;
-        this.currentWidth = 100;
         this.answerBonusTime = 60;
-        this.interval = null;
 
-        this.nextSceneSuccess = "";
-        this.nextSceneFail = "";
-
-        this.inputField.addEventListener("keydown", (event) => this.enterKey(event));
+        this.handleKeyDown = (event) => this.enterKey(event);
     }
+
     startMinigame1(option) {
-        this.showGameElements(); 
+        this.options = [...this.originalOptions];
+        this.currentIndex = 0;
+        this.currentWidth = this.maxWidth;
         this.nextSceneSuccess = option.next;
         this.nextSceneFail = option.fail;
+
+        clearInterval(this.interval);
+        this.inputField.removeEventListener("keydown", this.handleKeyDown);
+
+        this.inputField.addEventListener("keydown", this.handleKeyDown);
+
+        // Start the game
+        this.showGameElements();
         this.move();
         this.setInstruction();
     }
@@ -33,12 +37,9 @@ class Minigame {
     move() {
         this.popup.style.display = "block";
         this.inputField.focus();
-
-        this.currentWidth = 100;
         this.elem.style.width = this.currentWidth + "%";
 
         if (this.interval) clearInterval(this.interval);
-
         this.interval = setInterval(() => this.frame(), 80);
     }
 
@@ -53,17 +54,13 @@ class Minigame {
     }
 
     setInstruction() {
-        console.log(this.options); 
-        console.log(this.currentIndex);             
         this.instructionText.textContent = "TYPE : " + this.options[this.currentIndex];
         this.inputField.value = "";
         this.outcome.textContent = "";
     }
 
     addBonusTime() {
-        if (this.currentWidth < this.maxWidth) {
-            this.currentWidth = Math.min(this.currentWidth + this.answerBonusTime, this.maxWidth);
-        }
+        this.currentWidth = Math.min(this.currentWidth + this.answerBonusTime, this.maxWidth);
         this.elem.style.width = this.currentWidth + "%";
         clearInterval(this.interval);
         this.interval = setInterval(() => this.frame(), 80);
@@ -77,63 +74,55 @@ class Minigame {
 
     submitText() {
         const inputText = this.inputField.value.trim();
-        console.log(this.currentIndex);
-        console.log("User entered:", inputText);
-        console.log("I'm looking for:", this.options[this.currentIndex]);
         if (inputText === this.options[this.currentIndex]) {
             this.currentIndex++;
             this.addBonusTime();
-            this.move();
             this.success();
+            if (this.currentIndex < this.options.length) {
+                this.setInstruction();
+            }
         } else {
             this.endGameFail();
         }
         this.inputField.value = "";
-        this.setInstruction();
     }
 
     success() {
-        console.log("Spelt Correctly");
         if (this.currentIndex >= this.options.length) {
             this.endGameSuccess();
         }
     }
 
     endGameFail() {
-        this.hideGameElements();
+        this.cleanup();
         tw = new TypeWriter("outcome", this.failMessage);
         tw.start();
-        console.log("End game Fail");
-        clearInterval(this.interval);
-        console.log(tw.isFinished());
-
-        const waitForTypewriter = setInterval(() => {
+        const wait = setInterval(() => {
             if (tw.isFinished()) {
+                clearInterval(wait);
                 this.closePopup();
-                clearInterval(waitForTypewriter); //stop checking once finished
-                showScene(this.nextSceneFail); //show the next scene
+                showScene(this.nextSceneFail);
             }
         }, 100);
     }
 
     endGameSuccess() {
-        this.hideGameElements();
+        this.cleanup();
         tw = new TypeWriter("outcome", this.successMessage);
         tw.start();
-        console.log("End game Success");
-        clearInterval(this.interval);
-        const waitForTypewriter = setInterval(() => {
+        const wait = setInterval(() => {
             if (tw.isFinished()) {
+                clearInterval(wait);
                 this.closePopup();
-                clearInterval(waitForTypewriter); //stop checking once finished
-                showScene(this.nextSceneSuccess); //show the next scene
+                showScene(this.nextSceneSuccess);
             }
         }, 100);
     }
 
-    timeout() {
-        this.setInstruction();
-        console.log("Ran out of time");
+    cleanup() {
+        clearInterval(this.interval);
+        this.inputField.removeEventListener("keydown", this.handleKeyDown);
+        this.hideGameElements();
     }
 
     hideGameElements() {
@@ -142,14 +131,13 @@ class Minigame {
         this.instructionText.style.display = "none";
     }
 
-    showGameElements(){
+    showGameElements() {
         this.inputField.style.display = "";
         this.elem.style.display = "";
         this.instructionText.style.display = "";
     }
+
     closePopup() {
         this.popup.style.display = "none";
     }
 }
-
-
