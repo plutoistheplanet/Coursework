@@ -137,10 +137,10 @@ document.getElementById("screenReader").addEventListener("change", function () {
 document.getElementById("lightMode").addEventListener("change", function () {
 	document.body.classList.toggle("lightMode", this.checked);
 	if(this.checked){
-		applyTheme("lightMode");
+		applyTheme("defaultMode");
 	}
 	else{
-		applyTheme("defaultMode");
+		applyTheme("lightMode");
 	}
 
 });
