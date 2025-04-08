@@ -6,7 +6,6 @@ body.lightMode {
     --bg-color: #ffffff;
     --p-color: #00cafd;
 }
-
 *{
     font-family: AppleChicagoFont;
     color:var(--p-color);

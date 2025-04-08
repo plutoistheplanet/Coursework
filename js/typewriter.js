@@ -7,11 +7,11 @@ class TypeWriter {
     this.tempHTML = "";
     this.timeoutID = null;
     this.stopped = false;
-    this.finished = false; // Tracks whether the typing has finished
+    this.finished = false;
   }
 
   start() {
-    // Reset all instance variables
+    //Make sure stuff is reset
     this.targetElement.innerHTML = "";
     this.index = 0;
     this.tempHTML = "";
@@ -22,14 +22,12 @@ class TypeWriter {
 
   type() {
     if (this.stopped) {
-      // If typing was stopped, complete immediately.
       this.targetElement.innerHTML = this.text;
       this.finished = true;
       return;
     }
 
     if (this.index < this.text.length) {
-      // Handle HTML tags without delay.
       if (this.text[this.index] === "<") {
         let tagEnd = this.text.indexOf(">", this.index);
         if (tagEnd !== -1) {
@@ -42,16 +40,14 @@ class TypeWriter {
       }
 
       this.targetElement.innerHTML = this.tempHTML;
-      // Schedule next character
       this.timeoutID = setTimeout(() => this.type(), this.speed);
     } else {
-      // Typing is finished when all characters have been processed.
       this.finished = true;
     }
   }
 
   finish() {
-    // Stop the typing effect and complete text instantly.
+    //Stop the typing effect and complete text instantly.
     this.stopped = true;
     if (this.timeoutID) {
       clearTimeout(this.timeoutID);
@@ -64,8 +60,6 @@ class TypeWriter {
     return this.finished;
   }
 }
-
-// Later, if you want to immediately finish:
 function finishTyping() {
   tw.finish();
   if (tw.isFinished()) {
