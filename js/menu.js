@@ -134,3 +134,4 @@ document.getElementById("lightMode").addEventListener("change", function () {
 	}
 
 });
+applyTheme("defaultMode");
